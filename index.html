@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+</head>
+<body>
+  
+  <div>
+    <button id="addPlayerButton" onclick="handlers.addPlayer();">add player</button>
+    <input id="addPlayerValue" type="text">
+  </div>
+  
+  <div>
+    <button id="removePlayerButton" onclick="handlers.removePlayer();">remove player</button>
+    <input id="removePlayerPosition" type="number">
+  </div>
+  
+  <div>
+    <button id="addScoreButton" onclick="handlers.addScore();">add score</button>
+    <input id="addScorePlayerNumber" type="number" label="player number">
+    <input id="addScoreValue" type="number" label="score value">
+  </div>
+  
+  <div>
+    <button id="changeScoreButton" onclick="handlers.changeScore();">change score</button>
+    <input id="changeScorePlayerNumber" type="number">
+    <input id="changeScoreRoundPosition" type="number">
+    <input id="changeScoreValue" type="number">
+  </div>
+  
+  <div>
+    <button id="resetScore">reset score</button>
+  </div>
+  
+  <div id="scoreBox">
+  </div>
+
+<script type="text/javascript" src="scorer.js"></script>
+</body>
+</html>
