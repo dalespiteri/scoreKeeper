@@ -15,19 +15,20 @@ var scoreTable = {
   removePlayer: function (position) {
     "use strict";
     this.players.splice(position, 1);
-    this.displayScores();
+    view.displayPlayer();
   },
   
   addScore: function (playerNumber, score) {
     "use strict";
     this.players[playerNumber].score.push(score);
+    this.totalScore();
     view.displayPlayer();
   },
   
   changeScore: function (playerNumber, roundNumber, newValue) {
     "use strict";
     this.players[playerNumber].score[roundNumber] = newValue;
-    this.displayScores();
+    view.displayPlayer();
   },
   
   totalScore: function () {
@@ -49,14 +50,9 @@ var scoreTable = {
       player[i].score = [];
       player[i].totalScore = 0;
     }
-    this.displayScores();
-  },
-  
-  displayScores: function () {
-    "use strict";
-    this.totalScore();
-    console.log(this.players);
+    view.displayPlayer();
   }
+
 };
 
 var handlers = {
@@ -98,7 +94,6 @@ var handlers = {
 var view = {
   displayPlayer: function () {
     "use strict";
-    debugger;
     var i = 0,
       n = 0,
       scoreBox = document.getElementById('scoreBox');
@@ -107,7 +102,8 @@ var view = {
     
     for (i = 0; i < scoreTable.players.length; i++) {
       var createPlayerBox = document.createElement("div"),
-        createPlayerTitle = document.createElement("h1");
+        createPlayerTitle = document.createElement("h1"),
+        createH2 = document.createElement("h2");
       scoreBox.appendChild(createPlayerBox);
       createPlayerBox.id = 'playerBox' + i;
       document.getElementById('playerBox' + i).appendChild(createPlayerTitle);
@@ -123,6 +119,9 @@ var view = {
         createPlayerScoreLi.innerHTML = scoreTable.players[i].score[n];
         
       }
+      
+      document.getElementById('playerBox' + i).appendChild(createH2);
+      createH2.innerHTML = scoreTable.players[i].totalScore;
       
     }
     
