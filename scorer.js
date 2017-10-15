@@ -63,11 +63,9 @@ var handlers = {
     addPlayerName.value = '';
   },
   
-  removePlayer: function () {
+  removePlayer: function (position) {
     "use strict";
-    var removePlayerPosition = document.getElementById('removePlayerPosition');
-    scoreTable.removePlayer(removePlayerPosition.valueAsNumber);
-    removePlayerPosition.value = '';
+    scoreTable.removePlayer(position);
   },
   
   addScore: function () {
@@ -107,8 +105,10 @@ var view = {
       scoreBox.appendChild(createPlayerBox);
       createPlayerBox.id = 'playerBox' + i;
       document.getElementById('playerBox' + i).appendChild(createPlayerTitle);
-      createPlayerTitle.id = 'playerTitle' + i;
-      document.getElementById('playerTitle' + i).innerHTML = scoreTable.players[i].name;
+      createPlayerTitle.appendChild(document.createTextNode(scoreTable.players[i].name));
+      createPlayerTitle.appendChild(this.createDeleteButton());
+      createPlayerTitle.id = i;
+      
       
       for (n = 0; n < scoreTable.players[i].score.length; n++) {
         var createPlayerScoreUl = document.createElement("ul"),
@@ -125,5 +125,24 @@ var view = {
       
     }
     
+  },
+  
+  createDeleteButton: function() {
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = "remove player";
+    deleteButton.className = "deleteButton";
+    return deleteButton;
+  },
+  
+  addEventListener: function () {
+    var getScoreBox = document.getElementById('scoreBox');
+    getScoreBox.addEventListener ('click', function (event) {
+      if (event.target.className === 'deleteButton') {
+        handlers.removePlayer(parseInt(event.target.parentNode.id));
+      }
+    });
   }
+  
 };
+
+view.addEventListener();
