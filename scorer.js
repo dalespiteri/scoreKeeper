@@ -99,28 +99,27 @@ var view = {
   displayPlayer: function () {
     "use strict";
     debugger;
-    var scoreBox = document.getElementById('scoreBox'),
-      createPlayerBox = document.createElement("div"),
-      i = 0,
-      createPlayerTitle = document.createElement("h1"),
-      createPlayerScoreUl = document.createElement("ul"),
-      createPlayerScoreLi = document.createElement("li");
+    var i = 0,
+      n = 0,
+      scoreBox = document.getElementById('scoreBox');
     
     scoreBox.innerHTML = '';
     
     for (i = 0; i < scoreTable.players.length; i++) {
+      var createPlayerBox = document.createElement("div"),
+        createPlayerTitle = document.createElement("h1");
       scoreBox.appendChild(createPlayerBox);
       createPlayerBox.id = 'playerBox' + i;
-      var playerBox = document.getElementById('playerBox' + i);
-      playerBox.appendChild(createPlayerTitle);
+      document.getElementById('playerBox' + i).appendChild(createPlayerTitle);
       createPlayerTitle.id = 'playerTitle' + i;
       document.getElementById('playerTitle' + i).innerHTML = scoreTable.players[i].name;
       
-      for (var n = 0; n < scoreTable.players[i].score.length; n++) {
-        playerBox.appendChild(createPlayerScoreUl);
+      for (n = 0; n < scoreTable.players[i].score.length; n++) {
+        var createPlayerScoreUl = document.createElement("ul"),
+          createPlayerScoreLi = document.createElement("li");
+        document.getElementById('playerBox' + i).appendChild(createPlayerScoreUl);
         createPlayerScoreUl.id = 'playerScoreUl' + i;
-        var playerScoreUl = document.getElementById('playerScoreUl' + i);
-        playerScoreUl.appendChild(createPlayerScoreLi);
+        document.getElementById('playerScoreUl' + i).appendChild(createPlayerScoreLi);
         createPlayerScoreLi.innerHTML = scoreTable.players[i].score[n];
         
       }
