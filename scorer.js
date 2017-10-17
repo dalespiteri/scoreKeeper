@@ -92,6 +92,7 @@ var handlers = {
 var view = {
   displayPlayer: function () {
     "use strict";
+    debugger;
     var i = 0,
       n = 0,
       scoreBox = document.getElementById('scoreBox');
@@ -101,26 +102,34 @@ var view = {
     for (i = 0; i < scoreTable.players.length; i++) {
       var createPlayerBox = document.createElement("div"),
         createPlayerTitle = document.createElement("h1"),
+        createScoreAdd5 = document.createElement("button"),
+        createScoreAdd10 = document.createElement("button"),
         createH2 = document.createElement("h2");
       scoreBox.appendChild(createPlayerBox);
-      createPlayerBox.id = 'playerBox' + i;
-      document.getElementById('playerBox' + i).appendChild(createPlayerTitle);
+      createPlayerBox.id = i;
+      var getPlayerBox = document.getElementById(i);
+      getPlayerBox.appendChild(createPlayerTitle);
       createPlayerTitle.appendChild(document.createTextNode(scoreTable.players[i].name));
-      createPlayerTitle.appendChild(this.createDeleteButton());
-      createPlayerTitle.id = i;
-      
+      createPlayerTitle.id = 'playerName' + i;
+      getPlayerBox.appendChild(this.createDeleteButton());
+      getPlayerBox.appendChild(createScoreAdd5);
+      createScoreAdd5.className = 'scoreAdd5';
+      createScoreAdd5.textContent = "+ 5";
+      getPlayerBox.appendChild(createScoreAdd10);
+      createScoreAdd10.className = 'scoreAdd10';
+      createScoreAdd10.textContent = "+ 10";
       
       for (n = 0; n < scoreTable.players[i].score.length; n++) {
         var createPlayerScoreUl = document.createElement("ul"),
           createPlayerScoreLi = document.createElement("li");
-        document.getElementById('playerBox' + i).appendChild(createPlayerScoreUl);
+        document.getElementById(i).appendChild(createPlayerScoreUl);
         createPlayerScoreUl.id = 'playerScoreUl' + i;
         document.getElementById('playerScoreUl' + i).appendChild(createPlayerScoreLi);
         createPlayerScoreLi.innerHTML = scoreTable.players[i].score[n];
         
       }
       
-      document.getElementById('playerBox' + i).appendChild(createH2);
+      getPlayerBox.appendChild(createH2);
       createH2.innerHTML = scoreTable.players[i].totalScore;
       
     }
@@ -139,6 +148,10 @@ var view = {
     getScoreBox.addEventListener ('click', function (event) {
       if (event.target.className === 'deleteButton') {
         handlers.removePlayer(parseInt(event.target.parentNode.id));
+      } else if (event.target.className === 'scoreAdd5') {
+        scoreTable.addScore(parseInt(event.target.parentNode.id), 5);
+      } else if (event.target.className === 'scoreAdd10') {
+        scoreTable.addScore(parseInt(event.target.parentNode.id), 10);
       }
     });
   }
