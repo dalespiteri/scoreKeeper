@@ -100,29 +100,57 @@ var view = {
     scoreBox.innerHTML = '';
     
     for (i = 0; i < scoreTable.players.length; i++) {
+      
       var createPlayerBox = document.createElement("div"),
         createPlayerTitle = document.createElement("h1"),
+        createScoreMinus1 = document.createElement("button"),
+        createScoreMinus5 = document.createElement("button"),
+        createScoreMinus10 = document.createElement("button"),
+        createScoreAdd1 = document.createElement("button"),
         createScoreAdd5 = document.createElement("button"),
         createScoreAdd10 = document.createElement("button"),
         createScoreAddTotal = document.createElement("h3"),
         createScoreAddTotalButton = document.createElement("button"),
         createH2 = document.createElement("h2");
+      
       scoreBox.appendChild(createPlayerBox);
       createPlayerBox.id = i;
       var getPlayerBox = document.getElementById(i);
+      
       getPlayerBox.appendChild(createPlayerTitle);
       createPlayerTitle.appendChild(document.createTextNode(scoreTable.players[i].name));
       createPlayerTitle.id = 'playerName' + i;
+      
       getPlayerBox.appendChild(this.createDeleteButton());
+      
+      getPlayerBox.appendChild(createScoreMinus10);
+      createScoreMinus10.className = 'scoreMinus10';
+      createScoreMinus10.textContent = "- 10";
+      
+      getPlayerBox.appendChild(createScoreMinus5);
+      createScoreMinus5.className = 'scoreMinus5';
+      createScoreMinus5.textContent = "- 5";
+      
+      getPlayerBox.appendChild(createScoreMinus1);
+      createScoreMinus1.className = 'scoreMinus1';
+      createScoreMinus1.textContent = "- 1";
+      
+      getPlayerBox.appendChild(createScoreAdd1);
+      createScoreAdd1.className = 'scoreAdd1';
+      createScoreAdd1.textContent = "+ 1";
+      
       getPlayerBox.appendChild(createScoreAdd5);
       createScoreAdd5.className = 'scoreAdd5';
       createScoreAdd5.textContent = "+ 5";
+      
       getPlayerBox.appendChild(createScoreAdd10);
       createScoreAdd10.className = 'scoreAdd10';
       createScoreAdd10.textContent = "+ 10";
+      
       getPlayerBox.appendChild(createScoreAddTotalButton);
       createScoreAddTotalButton.className = "scoreAddTotalButton";
       createScoreAddTotalButton.textContent = "add score";
+      
       getPlayerBox.appendChild(createScoreAddTotal);
       createScoreAddTotal.textContent = scoreTable.players[i].roundScore;
       
@@ -153,12 +181,28 @@ var view = {
   addEventListener: function () {
     var getScoreBox = document.getElementById('scoreBox');
     getScoreBox.addEventListener ('click', function (event) {
+      
       if (event.target.className === 'deleteButton') {
         handlers.removePlayer(parseInt(event.target.parentNode.id));
+        
+      } else if (event.target.className === 'scoreMinus10') {
+        scoreTable.players[parseInt(event.target.parentNode.id)].roundScore += -10;
+        
+      } else if (event.target.className === 'scoreMinus5') {
+        scoreTable.players[parseInt(event.target.parentNode.id)].roundScore += -5;
+        
+      } else if (event.target.className === 'scoreMinus1') {
+        scoreTable.players[parseInt(event.target.parentNode.id)].roundScore += -1;
+        
+      } else if (event.target.className === 'scoreAdd1') {
+        scoreTable.players[parseInt(event.target.parentNode.id)].roundScore += 1;
+        
       } else if (event.target.className === 'scoreAdd5') {
         scoreTable.players[parseInt(event.target.parentNode.id)].roundScore += 5;
+        
       } else if (event.target.className === 'scoreAdd10') {
         scoreTable.players[parseInt(event.target.parentNode.id)].roundScore += 10;
+        
       } else if (event.target.className === 'scoreAddTotalButton') {
         scoreTable.addScore(parseInt(event.target.parentNode.id), scoreTable.players[parseInt(event.target.parentNode.id)].roundScore);
         scoreTable.players[parseInt(event.target.parentNode.id)].roundScore = 0;
