@@ -6,6 +6,7 @@ var scoreTable = {
     "use strict";
     this.players.push({
       name: playerName,
+      roundScore: 0,
       score: [],
       totalScore: 0
     });
@@ -92,7 +93,6 @@ var handlers = {
 var view = {
   displayPlayer: function () {
     "use strict";
-    debugger;
     var i = 0,
       n = 0,
       scoreBox = document.getElementById('scoreBox');
@@ -104,6 +104,8 @@ var view = {
         createPlayerTitle = document.createElement("h1"),
         createScoreAdd5 = document.createElement("button"),
         createScoreAdd10 = document.createElement("button"),
+        createScoreAddTotal = document.createElement("h3"),
+        createScoreAddTotalButton = document.createElement("button"),
         createH2 = document.createElement("h2");
       scoreBox.appendChild(createPlayerBox);
       createPlayerBox.id = i;
@@ -118,6 +120,11 @@ var view = {
       getPlayerBox.appendChild(createScoreAdd10);
       createScoreAdd10.className = 'scoreAdd10';
       createScoreAdd10.textContent = "+ 10";
+      getPlayerBox.appendChild(createScoreAddTotalButton);
+      createScoreAddTotalButton.className = "scoreAddTotalButton";
+      createScoreAddTotalButton.textContent = "add score";
+      getPlayerBox.appendChild(createScoreAddTotal);
+      createScoreAddTotal.textContent = scoreTable.players[i].roundScore;
       
       for (n = 0; n < scoreTable.players[i].score.length; n++) {
         var createPlayerScoreUl = document.createElement("ul"),
@@ -149,11 +156,18 @@ var view = {
       if (event.target.className === 'deleteButton') {
         handlers.removePlayer(parseInt(event.target.parentNode.id));
       } else if (event.target.className === 'scoreAdd5') {
-        scoreTable.addScore(parseInt(event.target.parentNode.id), 5);
+        scoreTable.players[parseInt(event.target.parentNode.id)].roundScore += 5;
       } else if (event.target.className === 'scoreAdd10') {
-        scoreTable.addScore(parseInt(event.target.parentNode.id), 10);
+        scoreTable.players[parseInt(event.target.parentNode.id)].roundScore += 10;
+      } else if (event.target.className === 'scoreAddTotalButton') {
+        scoreTable.addScore(parseInt(event.target.parentNode.id), scoreTable.players[parseInt(event.target.parentNode.id)].roundScore);
+        scoreTable.players[parseInt(event.target.parentNode.id)].roundScore = 0;
       }
+      
+    view.displayPlayer();
+      
     });
+    
   }
   
 };
