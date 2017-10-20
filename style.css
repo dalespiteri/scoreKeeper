@@ -3,32 +3,70 @@
   padding: 0;
 }
 
-.playerBox * {
-  margin: 10px 0;
-}
-
 h1 {
   font-size: 45pt;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
+  letter-spacing: -1px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+@keyframes slideIn {
+  from {
+    right: 100%;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+.slideInAni {
+  animation-name: slideIn;
+  animation-duration: 750ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .playerBox {
   max-width: 550px;
-  padding: 25px;
-  background-color: lightblue;
+  padding: 25px 25px 0 25px;
+  background-color: #cf2027;
   display: flex;
   flex-direction: column;
-  margin: 50px auto;
+  margin: 25px auto;
   position: relative;
+  font-family: 'exo', sans-serif;
+  border: 5px solid #cf2027;
+}
+
+.playerBox button {
+  font-family: 'exo', sans-serif;
+  font-weight: 900;
 }
 
 .deleteButton {
   position: absolute;
+  width: 32px;
+  height: 30px;
+  font-size: 15px;
   right: 0;
   top: 0;
   margin: 0;
-  padding: 15px;
+  color: #cf2027;
+  background-color: white;
+  border: 0;
+  opacity: 0.5;
+  transition: all 200ms;
+}
+
+.deleteButton:hover {
+  opacity: 1;
+  width: 45px;
+  height: 40px;
+  font-size: 20px;
 }
 
 .scoreButtonDiv {
@@ -36,23 +74,31 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .scoreAddButton {
   width: 60px;
   height: 55px;
+  font-size: 15pt;
   background-color: transparent;
-  border: 1px solid black;
+  border: 3px solid white;
+  color: white;
+}
+
+.scoreAddButton:hover {
+  background-color: white;
+  color: #cf2027;
 }
 
 .scoreAddTotalButton {
   width: 100%;
   height: 55px;
-  background-color: black;
+  background-color: white;
   border: none;
-  color: white;
+  color: #cf2027;
   text-transform: uppercase;
-  font-size: 20pt;
+  font-size: 25pt;
 }
 
 .scoreTotals {
@@ -63,4 +109,5 @@ h1 {
 
 .scoreTotals h1 {
   font-size: 70pt;
+  margin-bottom: 0;
 }
