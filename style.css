@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.playerBox * {
+  margin: 10px 0;
+}
+
+h1 {
+  font-size: 45pt;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.playerBox {
+  max-width: 550px;
+  padding: 25px;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  position: relative;
+}
+
+.deleteButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  padding: 15px;
+}
+
+.scoreButtonDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.scoreAddButton {
+  width: 60px;
+  height: 55px;
+  background-color: transparent;
+  border: 1px solid black;
+}
+
+.scoreAddTotalButton {
+  width: 100%;
+  height: 55px;
+  background-color: black;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 20pt;
+}
+
+.scoreTotals {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.scoreTotals h1 {
+  font-size: 70pt;
+}
