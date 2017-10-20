@@ -61,6 +61,7 @@ var handlers = {
     "use strict";
     var addPlayerName = window.document.getElementById('addPlayerValue');
     scoreTable.addPlayer(addPlayerName.value);
+    document.getElementById(scoreTable.players.length - 1).className += ' slideInAni';
     addPlayerName.value = '';
   },
   
@@ -76,18 +77,18 @@ var handlers = {
     scoreTable.addScore(addScorePlayerNumber.valueAsNumber, addScoreValue.valueAsNumber);
     addScorePlayerNumber.value = '';
     addScoreValue.value = '';
-  },
-  
-  changeScore: function () {
-    "use strict";
-    var changeScorePlayerNumber = document.getElementById('changeScorePlayerNumber'),
-      changeScoreRoundPosition = document.getElementById('changeScoreRoundPosition'),
-      changeScoreValue = document.getElementById('changeScoreValue');
-    scoreTable.changeScore(changeScorePlayerNumber.valueAsNumber, changeScoreRoundPosition.valueAsNumber, changeScoreValue.valueAsNumber);
-    changeScorePlayerNumber.value = '';
-    changeScoreRoundPosition.value = '';
-    changeScoreValue.value = '';
   }
+  
+//  changeScore: function () {
+//    "use strict";
+//    var changeScorePlayerNumber = document.getElementById('changeScorePlayerNumber'),
+//      changeScoreRoundPosition = document.getElementById('changeScoreRoundPosition'),
+//      changeScoreValue = document.getElementById('changeScoreValue');
+//    scoreTable.changeScore(changeScorePlayerNumber.valueAsNumber, changeScoreRoundPosition.valueAsNumber, changeScoreValue.valueAsNumber);
+//    changeScorePlayerNumber.value = '';
+//    changeScoreRoundPosition.value = '';
+//    changeScoreValue.value = '';
+//  }
 };
 
 var view = {
@@ -135,32 +136,32 @@ var view = {
       getScoreButtonDiv.appendChild(createScoreMinus10);
       createScoreMinus10.id = 'scoreMinus10';
       createScoreMinus10.className = "scoreAddButton"
-      createScoreMinus10.textContent = "- 10";
+      createScoreMinus10.textContent = "-10";
       
       getScoreButtonDiv.appendChild(createScoreMinus5);
       createScoreMinus5.id = 'scoreMinus5';
       createScoreMinus5.className = "scoreAddButton"
-      createScoreMinus5.textContent = "- 5";
+      createScoreMinus5.textContent = "-5";
       
       getScoreButtonDiv.appendChild(createScoreMinus1);
       createScoreMinus1.id = 'scoreMinus1';
       createScoreMinus1.className = "scoreAddButton"
-      createScoreMinus1.textContent = "- 1";
+      createScoreMinus1.textContent = "-1";
       
       getScoreButtonDiv.appendChild(createScoreAdd1);
       createScoreAdd1.id = 'scoreAdd1';
       createScoreAdd1.className = "scoreAddButton"
-      createScoreAdd1.textContent = "+ 1";
+      createScoreAdd1.textContent = "+1";
       
       getScoreButtonDiv.appendChild(createScoreAdd5);
       createScoreAdd5.id = 'scoreAdd5';
       createScoreAdd5.className = "scoreAddButton"
-      createScoreAdd5.textContent = "+ 5";
+      createScoreAdd5.textContent = "+5";
       
       getScoreButtonDiv.appendChild(createScoreAdd10);
       createScoreAdd10.id = 'scoreAdd10';
       createScoreAdd10.className = "scoreAddButton"
-      createScoreAdd10.textContent = "+ 10";
+      createScoreAdd10.textContent = "+10";
       
       getPlayerBox.appendChild(createScoreAddTotalButton);
       createScoreAddTotalButton.className = "scoreAddTotalButton";
