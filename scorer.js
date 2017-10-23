@@ -187,15 +187,19 @@ var view = {
 //      }
       
       getScoreTotalsDiv.appendChild(createScoreTotal);
-      createScoreTotal.innerHTML = scoreTable.players[i].totalScore;
+      createScoreTotal.textContent = scoreTable.players[i].totalScore;
       
     }
     
   },
   
   createDeleteButton: function() {
-    var deleteButton = document.createElement('button');
-    deleteButton.textContent = "X";
+    var deleteButton = document.createElement('div');
+    var icon = document.createElement("img");
+    icon.setAttribute("src", "images/close.svg");
+    icon.setAttribute("alt", "close button icon");
+    icon.className = "deleteButtonIcon";
+    deleteButton.appendChild(icon);
     deleteButton.className = "deleteButton";
     return deleteButton;
   },
@@ -204,7 +208,7 @@ var view = {
     var getScoreBox = document.getElementById('scoreBox');
     getScoreBox.addEventListener ('click', function (event) {
       
-      if (event.target.className === 'deleteButton') {
+      if (event.target.className === 'deleteButton' || event.target.className === 'deleteButtonIcon') {
         handlers.removePlayer(parseInt(event.target.parentNode.id));
         
       } else if (event.target.id === 'scoreMinus10') {
@@ -242,3 +246,9 @@ var view = {
 };
 
 view.addEventListener();
+
+document.getElementById("addPlayerValue").onkeypress = function(e) {
+  if (e.keyCode === 13) {
+    handlers.addPlayer();
+  }
+};
