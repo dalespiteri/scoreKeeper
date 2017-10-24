@@ -19,9 +19,22 @@ body {
   z-index: 2;
 }
 
+@media only screen and (max-width: 500px) {
+  .scoreHeader {
+    height: 75px;
+  }
+}
+
 .addPlayerIcon {
   height: 40px;
   margin-right: 20px;
+}
+
+@media only screen and (max-width: 500px) {
+  .addPlayerIcon {
+    height: 30px;
+    margin-right: 10px;
+  }
 }
 
 #addPlayerValue {
@@ -35,6 +48,14 @@ body {
   text-transform: capitalize;
   text-align: center;
   border-radius: 22px 0px 0px 22px;
+}
+
+@media only screen and (max-width: 500px) {
+  #addPlayerValue {
+    width: 125px;
+    padding: 3px;
+    font-size: 12pt;
+  }
 }
 
 #addPlayerValue:focus {
@@ -51,8 +72,15 @@ body {
   justify-content: center;
   align-items: center;
   background-color: white;
-  transition: all 250ms;
+  transition: all 150ms;
   transform: translateX(-50%);
+}
+
+@media only screen and (max-width: 500px) {
+  #addPlayerButton {
+    width: 29px;
+    height: 29px;
+  }
 }
 
 #addPlayerButton:hover {
@@ -71,11 +99,25 @@ body {
 #resetScore {
   position: absolute;
   right: 25px;
+  transition: all 100ms;
+}
+
+@media only screen and (max-width: 500px) {
+  #resetScore {
+    position: relative;
+    right: 0;
+  }
 }
 
 #resetScore img {
-  height: 30px;
+  height: 40px;
   opacity: 0.5;
+}
+
+@media only screen and (max-width: 500px) {
+  #resetScore img {
+    height: 30px;
+  }
 }
 
 @keyframes resetSpin {
@@ -92,6 +134,10 @@ body {
   animation-fill-mode: backwards;
 }
 
+#resetScore:active {
+  transform: scale(0.9);
+}
+
 #scoreBox {
   width: 100%;
   margin: auto;
@@ -100,6 +146,12 @@ body {
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 500px) {
+  #scoreBox {
+    padding-top: 85px;
+  }
 }
 
 h1 {
@@ -129,7 +181,8 @@ h1 {
 }
 
 .playerBox {
-  width: 300px;
+  width: 100%;
+  max-width: 400px;
   padding: 20px 30px 10px 30px;
   background-color: #cf2027;
   display: flex;
@@ -139,6 +192,13 @@ h1 {
   margin: 10px;
   border-bottom: 20px solid #961116;
   box-shadow: 0 10px 20px rgba(0,0,0,0.25)
+}
+
+@media only screen and (max-width: 500px) {
+  .playerBox {
+    margin: 10px auto;
+    padding: 15px 20px 10px 20px;
+  }
 }
 
 .playerBox button {
@@ -164,7 +224,7 @@ h1 {
 
 .deleteButton img {
   position: relative;
-  width: 70%;
+  width: 60%;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -192,6 +252,14 @@ h1 {
   border: 2px solid white;
   color: white;
   transition: transform 100ms;
+}
+
+@media only screen and (max-width: 500px) {
+  .scoreAddButton {
+    width: 35px;
+    height: 32px;
+    font-size: 12pt;
+  }
 }
 
 .scoreAddButton:hover {
@@ -242,4 +310,10 @@ h1 {
 .scoreTotals h1 {
   font-size: 50pt;
   margin-bottom: 0;
+}
+
+@media only screen and (max-width: 500px) {
+  .scoreTotals h1 {
+    font-size: 40pt;
+  }
 }
