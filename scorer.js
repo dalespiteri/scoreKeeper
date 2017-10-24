@@ -59,8 +59,11 @@ var scoreTable = {
 var handlers = {
   addPlayer: function () {
     "use strict";
-    var addPlayerName = window.document.getElementById('addPlayerValue');
-    scoreTable.addPlayer(addPlayerName.value);
+    var addPlayerName = document.getElementById('addPlayerValue');
+    if (addPlayerName.value === "") {
+      scoreTable.addPlayer('player ' + (scoreTable.players.length +1));
+    } else { scoreTable.addPlayer(addPlayerName.value);
+      }
     document.getElementById(scoreTable.players.length - 1).className += ' slideInAni';
     addPlayerName.value = '';
   },
