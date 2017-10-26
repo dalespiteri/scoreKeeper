@@ -9,16 +9,19 @@
 <body>
   
   <div class="scoreHeader">
-    <img src="images/addPlayer.svg" class="addPlayerIcon">
-    <input id="addPlayerValue" type="text" placeholder="add player">
-    <div id="addPlayerButton" onclick="handlers.addPlayer();">
-      <img src="images/submit.svg">
+    <div class="scoreHeaderAdd">
+      <img src="images/addPlayer.svg" class="addPlayerIcon">
+      <input id="addPlayerValue" type="text" placeholder="add player" onfocus="this.placeholder = ''">
+      <div id="addPlayerButton" onclick="handlers.addPlayer();">
+        <img src="images/submit.svg">
+      </div>
+      <div id="resetScore" onclick="scoreTable.resetScore();">
+        <img src="images/reset.svg">
+      </div>
     </div>
-    <div id="resetScore" onclick="scoreTable.resetScore();">
-      <img src="images/reset.svg">
-    </div>
+
+    <div class="scoreHeaderStandings"><ul id="standings"></ul></div>
   </div>
-  
 <!--
   <div>
     <button id="changeScoreButton" onclick="handlers.changeScore();">change score</button>

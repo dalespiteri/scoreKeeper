@@ -55,6 +55,7 @@ var scoreTable = {
   },
   
   highScore: function () {
+    "use strict";
     var scoreArray = [];
     for (var i = 0; i < scoreTable.players.length; i++) {
       scoreArray.push(scoreTable.players[i].totalScore);
@@ -66,6 +67,21 @@ var scoreTable = {
     
     var highScore = Array.max(scoreArray);
     return highScore;
+  },
+  
+  standings: function () {
+    var scoreArray = [];
+    for (var i = 0; i < scoreTable.players.length; i++) {
+      scoreArray.push(
+        {
+          score: scoreTable.players[i].totalScore,
+          player: scoreTable.players[i].name
+        })
+    }
+    
+    scoreArray.sort(function(a,b){return b.score-a.score});
+    
+    return scoreArray;
   }
 
 };
@@ -84,7 +100,6 @@ var handlers = {
   
   removePlayer: function (position) {
     "use strict";
-    debugger;
     scoreTable.removePlayer(position);
   },
   
@@ -112,9 +127,23 @@ var handlers = {
 var view = {
   displayPlayer: function () {
     "use strict";
-    var i = 0,
-      n = 0,
-      scoreBox = document.getElementById('scoreBox');
+    var standings = document.getElementById('standings'),
+        firstPlace = scoreTable.standings();
+    standings.innerHTML = '';
+    
+    for (var i = 0; i < firstPlace.length && i < 3; i++) {
+      var createStandingsLi = document.createElement('li');
+      standings.appendChild(createStandingsLi);
+      if (i === 0) {
+        createStandingsLi.textContent = i+1 + "st: " + firstPlace[i].player + " • " + firstPlace[i].score;
+      } else if (i === 1) {
+        createStandingsLi.textContent = i+1 + "nd: " + firstPlace[i].player + " • " + firstPlace[i].score;
+      } else if (i ===2) {
+        createStandingsLi.textContent = i+1 + "rd: " + firstPlace[i].player + " • " + firstPlace[i].score;
+      }
+    }
+    
+    var scoreBox = document.getElementById('scoreBox');
     
     scoreBox.innerHTML = '';
     

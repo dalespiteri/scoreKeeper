@@ -5,9 +5,17 @@
 
 body {
   background-color: #e46049;
+  font-family: 'exo', sans-serif;
 }
 
 .scoreHeader {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+}
+
+.scoreHeaderAdd {
   width: 100%;
   height: 100px;
   background-color: black;
@@ -15,12 +23,35 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  z-index: 2;
+}
+
+.scoreHeaderStandings {
+  width: 100%;
+  padding: 5px;
+  background-color: #fffa6d;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scoreHeaderStandings ul {
+  list-style: none;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.scoreHeaderStandings ul li {
+  display: inline;
+  margin: 0 20px;
+}
+
+.scoreHeaderStandings ul li:nth-child(1) {
+  font-weight: 900;
 }
 
 @media only screen and (max-width: 500px) {
-  .scoreHeader {
+  .scoreHeaderAdd {
     height: 75px;
   }
 }
@@ -33,62 +64,63 @@ body {
 @media only screen and (max-width: 500px) {
   .addPlayerIcon {
     height: 30px;
-    margin-right: 10px;
+    margin-right: 15px;
   }
 }
 
 #addPlayerValue {
   width: 200px;
+  height: 40px;
+  box-sizing: border-box;
   background-color: transparent;
-  padding: 5px;
   border: 1px solid white;
-  color: white;
+  color: black;
   font-size: 16pt;
-  font-family: 'exo', sans-serif;
   text-transform: capitalize;
   text-align: center;
-  border-radius: 22px 0px 0px 22px;
+  font-family: 'exo', sans-serif;
 }
 
 @media only screen and (max-width: 500px) {
   #addPlayerValue {
-    width: 125px;
+    width: 105px;
     padding: 3px;
     font-size: 12pt;
   }
 }
 
 #addPlayerValue:focus {
-  outline: 0;
+  background-color: white;
+  color: black;
 }
 
 #addPlayerButton {
   cursor: pointer;
   width: 40px;
   height: 40px;
-  border-radius: 100%;
+  margin-right: 20px;
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
   transition: all 150ms;
-  transform: translateX(-50%);
 }
 
 @media only screen and (max-width: 500px) {
   #addPlayerButton {
     width: 29px;
     height: 29px;
+    margin-right: 15px;
   }
 }
 
 #addPlayerButton:hover {
-  transform: scale(1.15) translateX(-50%);
+  transform: scale(1.15);
 }
 
 #addPlayerButton:active {
-  transform: scale(1) translateX(-50%);
+  transform: scale(1);
 }
 
 #addPlayerButton img {
@@ -100,6 +132,10 @@ body {
   position: absolute;
   right: 25px;
   transition: all 100ms;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 @media only screen and (max-width: 500px) {
@@ -141,7 +177,7 @@ body {
 #scoreBox {
   width: 100%;
   margin: auto;
-  padding-top: 125px;
+  padding-top: 165px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -164,7 +200,7 @@ h1 {
 
 @keyframes slideIn {
   from {
-    top: 200px;
+    top: 50px;
     opacity: 0;
   }
   to {
@@ -323,15 +359,12 @@ h1 {
 @keyframes pulse {
   0% {
     background-color: #cf2027;
-    border-bottom: 20px solid #961116;
   }
   50% {
     background-color: #961116;
-    border-bottom: 20px solid #cf2027;
   }
   100% {
     background-color: #cf2027;
-    border-bottom: 20px solid #961116;
   }
 }
 
@@ -339,4 +372,4 @@ h1 {
   animation-name: pulse;
   animation-duration: 5500ms;
   animation-iteration-count: infinite;
-}
+  border-bottom: 20px solid #fffa6d;
