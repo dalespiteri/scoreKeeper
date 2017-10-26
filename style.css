@@ -150,7 +150,7 @@ body {
 
 @media only screen and (max-width: 500px) {
   #scoreBox {
-    padding-top: 85px;
+    padding-top: 75px;
   }
 }
 
@@ -196,8 +196,9 @@ h1 {
 
 @media only screen and (max-width: 500px) {
   .playerBox {
-    margin: 10px auto;
+    margin: 0;
     padding: 15px 20px 10px 20px;
+    box-shadow: 0;
   }
 }
 
@@ -227,6 +228,7 @@ h1 {
   width: 60%;
   top: 50%;
   transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .deleteButton:hover {
@@ -321,12 +323,15 @@ h1 {
 @keyframes pulse {
   0% {
     background-color: #cf2027;
+    border-bottom: 20px solid #961116;
   }
   50% {
     background-color: #961116;
+    border-bottom: 20px solid #cf2027;
   }
   100% {
     background-color: #cf2027;
+    border-bottom: 20px solid #961116;
   }
 }
 

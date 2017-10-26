@@ -84,6 +84,7 @@ var handlers = {
   
   removePlayer: function (position) {
     "use strict";
+    debugger;
     scoreTable.removePlayer(position);
   },
   
@@ -231,7 +232,8 @@ var view = {
     var getScoreBox = document.getElementById('scoreBox');
     getScoreBox.addEventListener ('click', function (event) {
       
-      if (event.target.className === 'deleteButton' || event.target.className === 'deleteButtonIcon') {
+      if (event.target.className === 'deleteButton') {
+        debugger;
         handlers.removePlayer(parseInt(event.target.parentNode.id));
         
       } else if (event.target.id === 'scoreMinus10') {
