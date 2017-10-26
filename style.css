@@ -317,3 +317,21 @@ h1 {
     font-size: 40pt;
   }
 }
+
+@keyframes pulse {
+  0% {
+    background-color: #cf2027;
+  }
+  50% {
+    background-color: #961116;
+  }
+  100% {
+    background-color: #cf2027;
+  }
+}
+
+.highScore {
+  animation-name: pulse;
+  animation-duration: 5500ms;
+  animation-iteration-count: infinite;
+}
