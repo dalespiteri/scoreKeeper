@@ -52,6 +52,20 @@ var scoreTable = {
       player[i].totalScore = 0;
     }
     view.displayPlayer();
+  },
+  
+  highScore: function () {
+    var scoreArray = [];
+    for (var i = 0; i < scoreTable.players.length; i++) {
+      scoreArray.push(scoreTable.players[i].totalScore);
+    }
+    
+    Array.max = function (array) {
+      return Math.max.apply(Math, array);
+    }
+    
+    var highScore = Array.max(scoreArray);
+    return highScore;
   }
 
 };
@@ -191,6 +205,12 @@ var view = {
       
       getScoreTotalsDiv.appendChild(createScoreTotal);
       createScoreTotal.textContent = scoreTable.players[i].totalScore;
+      
+      var highScore = scoreTable.highScore();
+      
+      if (scoreTable.players[i].totalScore === highScore && highScore !== 0) {
+        document.getElementById(i).className += " highScore";
+      }
       
     }
     
