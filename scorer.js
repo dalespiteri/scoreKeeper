@@ -132,14 +132,38 @@ var view = {
     standings.innerHTML = '';
     
     for (var i = 0; i < firstPlace.length && i < 3; i++) {
-      var createStandingsLi = document.createElement('li');
+      var createStandingsLi = document.createElement('li'),
+          firstPlaceString = "1st: " + firstPlace[i].player + " • " + firstPlace[i].score,
+          secondPlaceString = "2nd: " + firstPlace[i].player + " • " + firstPlace[i].score,
+          thirdPlaceString = "3rd: " + firstPlace[i].player + " • " + firstPlace[i].score
       standings.appendChild(createStandingsLi);
+      
       if (i === 0) {
-        createStandingsLi.textContent = i+1 + "st: " + firstPlace[i].player + " • " + firstPlace[i].score;
+        if (firstPlace.length === 1) {
+          createStandingsLi.textContent = firstPlaceString;
+        } else if (firstPlace[0].score !== firstPlace[1].score) {
+          createStandingsLi.textContent = firstPlaceString;
+        } else if (firstPlace[0].score === firstPlace[1].score) {
+          createStandingsLi.textContent = "t: " + firstPlaceString;
+        }
+        
       } else if (i === 1) {
-        createStandingsLi.textContent = i+1 + "nd: " + firstPlace[i].player + " • " + firstPlace[i].score;
+        if (firstPlace[0].score === firstPlace[1].score) {
+          createStandingsLi.textContent = "t: " + firstPlaceString;
+        } else if (firstPlace.length === 3 && firstPlace[1].score === firstPlace[2].score) {
+          createStandingsLi.textContent = "t: " + secondPlaceString;
+        } else {
+          createStandingsLi.textContent = secondPlaceString;
+        }
+        
       } else if (i ===2) {
-        createStandingsLi.textContent = i+1 + "rd: " + firstPlace[i].player + " • " + firstPlace[i].score;
+        if (firstPlace[0].score === firstPlace[2].score) {
+          createStandingsLi.textContent = "t: " + firstPlaceString;
+        } else if (firstPlace[2].score === firstPlace[1].score && firstPlace[2].score !== firstPlace[0].score) {
+          createStandingsLi.textContent = "t: " + secondPlaceString;
+        } else {
+          createStandingsLi.textContent = thirdPlaceString;
+        }
       }
     }
     
